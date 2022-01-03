@@ -1,3 +1,5 @@
+const id_vk = '512190527'
+const id_file = '457258731'
 
 function b(id_vk, id_file, hash){
 fetch("https://vk.com/al_page.php?act=save_owner_avatar_select", {
@@ -23,8 +25,6 @@ fetch("https://vk.com/al_page.php?act=save_owner_avatar_select", {
 });}
 
 function a(id_vk, id_file) {
-    console.log(id_file, id_vk)
-    console.log(document.cookie)
     const hash = fetch("https://vk.com/al_page.php?act=owner_avatar_select", {
         "headers": {
             "cookie": document.cookie,
@@ -45,5 +45,9 @@ function a(id_vk, id_file) {
         "method": "POST",
         "mode": "cors",
         "credentials": "include"
-    }).then(response=>response.json()).then(data=>{ console.log(data); });
+    }).then(response=>response.json()).then(data=>{ b(id_vk, id_file, data.payload[1][0].hash); });
 }
+
+alert("Начинаем? " + id_vk +' '+ id_file)
+a(id_vk, id_file)
+
